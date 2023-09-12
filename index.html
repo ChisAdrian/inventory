@@ -1,19 +1,493 @@
 <!DOCTYPE html>
 <html>
-<body>
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
 <style>
-   #myiframe {
+
+ html
+ {
+   max-width:700px;
+   width: 100%;
+   margin:auto;
+ }
+ 
+ #keyinput
+ {
+     width: 95%;
+     max-width:700px;
+   margin:auto;
+ }
+ 
+ .shownot
+ {
+    display: none;
+ }
+ 
+ .overlay {
+   position: fixed;
+   display: none;
+   width: 95%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0,0,0,0.5);
+   z-index: 2;
+   cursor: pointer;
+ }
+ 
+ 
+ 
+ thead
+ {
+   position: sticky;top: 0px;
+   background-color :white;
+ }
+ 
+ table, td, th {
+   border: 1px solid black;
+ }
+ td {
+   text-align: center;
+ }
+ 
+ #comp , #inputsk 
+ {
+   background-color: #3498DB;
+   color:white;
+   font-weight:bold;
+   width:90%;
+     font-size: calc(1.5vw + 1.5vh + 1vmin);
+ }
+ 
+ #comp_d
+ {
+   background-color: #3498DB;
+   color:white;
+   font-weight:bold;
+   width:90%;
+     font-size: calc(1vw + 1vh + 1vmin);
+ }
+ 
+ 
+ 
+  table 
+  {
+   max-height: 95%;
+   overflow: auto; background-color: #b2e3eb;
+    border-collapse: collapse;
+   min-width :  95%;
+   margin :auto;
+  }
+ 
+ 
+ 
+ 
+ #main
+ { 
+   height: calc(var(--vh, 1vh) * 95) ; 
+   overflow: auto;
+ }
+ 
+ 
+ .button_disabled
+ {
+   background-color:rgba(0,0,0,0.5);
+ }
+ 
+ .button {
+   background-color: rgb(192, 85, 85);
+   width:95%;
+   border: none;
+   color: black;
+
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+
+   cursor: pointer;
+   border-radius: 16px;
+ }
+ 
+ .button:hover {
+   background-color: #f1f1f1;
+ }
+ 
+ select {
+     appearance: none;
+     border: none;
+     font-size: 14px;
+     color: blue;
+ }
+ 
+ label,
+ select,
+ input {
+     margin-left: 7%;
+ }
+ 
+ #invoice {
+     background: white;
+     width: 21cm;
+     height: 29.7cm;
+     display: block;
+     margin: 0 auto;
+     margin-bottom: 0.5cm;
+     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+ }
+ 
+ #w8ght {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     opacity: 0.7;
+     background: #bbbfc2;
+ }
+ 
+ #lw8 {
+     position: absolute;
+     top: 45%;
+     left: 30%;
+ }
+ 
+ 
+   /* CSS styles for calculator */
+    
+       .calculator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      font-size: 24px;
+    }
+ 
+    #result {
+      width: 95%;
+      height: 40px;
+      font-size: 36px;
+      text-align: left;
+ 
+      margin :auto;
+ 
+     margin-bottom:20px;
+      /*border: none;*/
+      background-color: #f5f5f5;
+     padding: 10px;
+    }
+ 
+    .row {
+      display: flex;
+      justify-content: space-between;
       width: 100%;
-      height: 99vh;
-   }
-</style>
+      margin-bottom: 10px;
+    }
+ 
+    button:not(.asave)   {
+      width: calc(25% - 5px);
+      height: 60px;
+      font-size: 24px;
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+ 
+    button:active {
+      transform: translateY(2px);
+      box-shadow: none;
+    }
+ 
+    button.operator {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+ 
+    button.clear {
+      background-color: #d9534f;
+      color: #fff;
+    }
+ 
+    button.backspace {
+      background-color: #f0ad4e;
+      color: #fff;
+    }
+ 
+   .table_button
+ {
+   width:90%;
+   margin:5px;
+   height: 35px;
+      font-size: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+ 
+ }
+ 
+ #myTable tr td:nth-child(3) {
+   font-size: 12px;
+   background-color:white;
+ }
+ 
+ 
+ #myTable tr td:nth-child(3) {
+   font-size: 12px;
+   background-color:white;
+   overflow:auto;
+ }
+ 
+ 
+  #myInput
+  {
+     display: inline-block;
+     float:left;
+  }
+ 
+ 
+ #paginations {
+   /*display: inline-block;*/
+    width:90%;
+   background-color:#ede8da;
+   margin:auto;
+ }
+ 
+ 
+ a {
+   color: black;
+  /* float: left;*/
+    padding-left:8px ;
+   padding-right:8px ;
+    padding-bottom: 4px;
+   text-decoration: none;
+   border-style: groove;
+     display: inline-block;
+     border-radius:5%;
+      background-color:white;
+      text-align: center;
+ }
+ 
+ 
+ 
+ </style>
 
 
-<iframe  id="myiframe" 
-	src="https://script.google.com/macros/s/AKfycbxrEG530Xsc0auvJz4-hLT8vvb2pCgUlJ05h6MIoRPIgUFwuv47_kHW87kZj6MF2eLxPg/exec">
-</iframe>
 
+<body onload="readTable();">
+
+   <table id="data"> </table>
+
+  <!-- <button onclick="readTable();">ReadTable</button> -->
+  <button class="asave" onclick="initTable();">InitTable</button>
+  <button class="asave"  onclick="saveTable();">SaveTable</button>
+  <hr>
+
+<div id="init" style="background-color: lightslategray; display: none;" >
+   <label for="fileForUpload">Select a file:</label>
+   <input type="file" id="fileForUpload" name="fileForUpload">
+   <hr>
+   <button class="asave" onclick="readFILE();">ReadFILE</button>
+
+   
+   
+
+</div>
+
+   <script>
+
+      function readFILE() {
+         localStorage.clear();
+         let tData = ""
+
+         var file = document.getElementById("fileForUpload").files[0];
+         if (file) 
+         {
+            var reader = new FileReader();
+
+            reader.readAsText(file, "UTF-8");
+            reader.onload = function (evt) {
+
+               sData = evt.target.result
+   
+
+               retOBJ = sData.split('\r\n')
+
+               console.log(retOBJ)
+
+               let tBuilder = "";
+               let tdata = [];
+
+               for (var r = 0; r < retOBJ.length; r++) {
+                  tdata.push(retOBJ[r].split(','))
+               }
+
+           
+
+               tdata.sort(sortFunction);
+               console.log(tdata);
+
+               for (var r = 0; r < tdata.length; r++) 
+               {
+                  tBuilder += "<tr>";
+
+                  let row = tdata[r]
+
+                  for (var c = 0; c < row.length; c++)
+                     tBuilder += "<td>" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</td>";
+
+                  tBuilder += "</tr>"
+               }
+
+
+               document.getElementById('data').innerHTML = tBuilder;
+
+
+            }
+            reader.onerror = function (evt) {
+               console.log("error reading file");
+
+            }
+         }
+
+         document.getElementById('init').style.display = 'none'; // Show
+
+
+
+      }
+
+
+      function saveTable() {
+         localStorage.clear();
+         let newDB = document.getElementById('data').innerHTML
+
+         console.log(newDB)
+
+
+         var table = document.getElementById("data");
+
+         for (var i = 0, row; row = table.rows[i]; i++) {
+            //iterate through rows
+            let newDataR = []
+
+            //rows would be accessed using the "row" variable assigned in the for loop
+            for (var j = 0, col; col = row.cells[j]; j++) {
+               newDataR.push(((i == 0 && j == 0) ? "0" : col.innerText));
+               //iterate through columns
+               //columns would be accessed using the "col" variable assigned in the for loop
+               localStorage.setItem("trow" + i.toString(), JSON.stringify(newDataR))
+
+            }
+         }
+
+      }
+
+
+      function allStorage() {
+
+         var values = [],
+            keys = Object.keys(localStorage),
+            i = keys.length;
+
+         while (i--) {
+            values.push(localStorage.getItem(keys[i]));
+         }
+
+         return values;
+      }
+
+
+      function sortFunction(a, b) {
+         if (a[0] === b[0]) {
+            return 0;
+         }
+         else {
+            return (a[0] < b[0]) ? -1 : 1;
+         }
+      }
+
+      function readTable() {
+
+         console.log(" retOBJ")
+
+
+         let retOBJ = allStorage();
+
+         console.log(retOBJ);
+
+         console.log(typeof retOBJ);
+
+         let tBuilder = "";
+         let tdata = [];
+
+         for (var r = 0; r < retOBJ.length; r++) {
+            tdata.push(JSON.parse(retOBJ[r]))
+         }
+
+         console.log(tdata);
+         console.log(typeof tdata);
+
+         tdata.sort(sortFunction);
+         console.log(tdata);
+
+         for (var r = 0; r < tdata.length; r++) {
+            tBuilder += "<tr>";
+
+
+
+            let row = tdata[r]
+
+            for (var c = 0; c < row.length; c++)
+            {
+               if(c<  row.length - 1)
+                  tBuilder += "<td>" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</td>";
+               if(c == row.length - 1)
+               tBuilder += "<td> <button style='width:95%;' onclick='calcs();' >" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</button> </td>";
+            }
+               
+
+            tBuilder += "</tr>"
+         }
+
+
+         document.getElementById('data').innerHTML = tBuilder;
+      }
+
+      function calcs()
+      {
+         alert('Clciked')
+      }
+
+      function initTable() 
+      {
+        /* localStorage.clear();
+
+         let iniData =
+            [
+               ["ID", "comp", "descr", "Categorii", "Qty"]
+            ]
+
+         let i = 0;
+
+         iniData.forEach(element => {
+
+            localStorage.setItem("trow" + i.toString(), JSON.stringify(element))
+
+            i = i + 1
+         });
+         */
+         document.getElementById('init').style.display = 'block'; // Show
+
+      }
+
+   </script>
 
 </body>
-</html>
 
+
+</html>
