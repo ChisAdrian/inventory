@@ -6,189 +6,185 @@
 </head>
 
 <style>
+   html {
+      max-width: 700px;
+      width: 100%;
+      margin: auto;
+   }
 
- html
- {
-   max-width:700px;
-   width: 100%;
-   margin:auto;
- }
- 
- #keyinput
- {
-     width: 95%;
-     max-width:700px;
-   margin:auto;
- }
- 
- .shownot
- {
-    display: none;
- }
- 
- .overlay {
-   position: fixed;
-   display: none;
-   width: 95%;
-   height: 100%;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background-color: rgba(0,0,0,0.5);
-   z-index: 2;
-   cursor: pointer;
- }
- 
- 
- 
- thead
- {
-   position: sticky;top: 0px;
-   background-color :white;
- }
- 
- table, td, th {
-   border: 1px solid black;
- }
- td {
-   text-align: center;
- }
- 
- #comp , #inputsk 
- {
-   background-color: #3498DB;
-   color:white;
-   font-weight:bold;
-   width:90%;
-     font-size: calc(1.5vw + 1.5vh + 1vmin);
- }
- 
- #comp_d
- {
-   background-color: #3498DB;
-   color:white;
-   font-weight:bold;
-   width:90%;
-     font-size: calc(1vw + 1vh + 1vmin);
- }
- 
- 
- 
-  table 
-  {
-   max-height: 95%;
-   overflow: auto; background-color: #b2e3eb;
-    border-collapse: collapse;
-   min-width :  95%;
-   margin :auto;
-  }
- 
- 
- 
- 
- #main
- { 
-   height: calc(var(--vh, 1vh) * 95) ; 
-   overflow: auto;
- }
- 
- 
- .button_disabled
- {
-   background-color:rgba(0,0,0,0.5);
- }
- 
- .button {
-   background-color: rgb(192, 85, 85);
-   width:95%;
-   border: none;
-   color: black;
+   #keyinput {
+      width: 95%;
+      max-width: 700px;
+      margin: auto;
+   }
 
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
+   .shownot {
+      display: none;
+   }
 
-   cursor: pointer;
-   border-radius: 16px;
- }
- 
- .button:hover {
-   background-color: #f1f1f1;
- }
- 
- select {
-     appearance: none;
-     border: none;
-     font-size: 14px;
-     color: blue;
- }
- 
- label,
- select,
- input {
-     margin-left: 7%;
- }
- 
- #invoice {
-     background: white;
-     width: 21cm;
-     height: 29.7cm;
-     display: block;
-     margin: 0 auto;
-     margin-bottom: 0.5cm;
-     box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
- }
- 
- #w8ght {
-     position: absolute;
-     width: 100%;
-     height: 100%;
-     top: 0;
-     left: 0;
-     opacity: 0.7;
-     background: #bbbfc2;
- }
- 
- #lw8 {
-     position: absolute;
-     top: 45%;
-     left: 30%;
- }
- 
- 
+   .overlay {
+      position: fixed;
+      display: none;
+      width: 95%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      cursor: pointer;
+   }
+
+
+
+   thead {
+      position: sticky;
+      top: 0px;
+      background-color: white;
+   }
+
+   table,
+   td,
+   th {
+      border: 1px solid black;
+   }
+
+   td {
+      text-align: center;
+   }
+
+   #comp,
+   #inputsk {
+      background-color: #3498DB;
+      color: white;
+      font-weight: bold;
+      width: 90%;
+      font-size: calc(1.5vw + 1.5vh + 1vmin);
+   }
+
+   #comp_d {
+      background-color: #3498DB;
+      color: white;
+      font-weight: bold;
+      width: 90%;
+      font-size: calc(1vw + 1vh + 1vmin);
+   }
+
+
+
+   table {
+      max-height: 95%;
+      overflow: auto;
+      background-color: #b2e3eb;
+      border-collapse: collapse;
+      min-width: 95%;
+      margin: auto;
+   }
+
+
+
+
+   #table-parent {
+      height: 85vh;
+      overflow: auto;
+   }
+
+
+   .button_disabled {
+      background-color: rgba(0, 0, 0, 0.5);
+   }
+
+   .button {
+      background-color: rgb(192, 85, 85);
+      width: 95%;
+      border: none;
+      color: black;
+
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+
+      cursor: pointer;
+      border-radius: 16px;
+   }
+
+   .button:hover {
+      background-color: #f1f1f1;
+   }
+
+   select {
+      appearance: none;
+      border: none;
+      font-size: 14px;
+      color: blue;
+   }
+
+   label,
+   select,
+   input {
+      margin-left: 7%;
+   }
+
+   #invoice {
+      background: white;
+      width: 21cm;
+      height: 29.7cm;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 0.5cm;
+      box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+   }
+
+   #w8ght {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0.7;
+      background: #bbbfc2;
+   }
+
+   #lw8 {
+      position: absolute;
+      top: 45%;
+      left: 30%;
+   }
+
+
    /* CSS styles for calculator */
-    
-       .calculator {
+
+   .calculator {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin: 20px;
       font-size: 24px;
-    }
- 
-    #result {
+   }
+
+   #result {
       width: 95%;
       height: 40px;
       font-size: 36px;
       text-align: left;
- 
-      margin :auto;
- 
-     margin-bottom:20px;
+
+      margin: auto;
+
+      margin-bottom: 20px;
       /*border: none;*/
       background-color: #f5f5f5;
-     padding: 10px;
-    }
- 
-    .row {
+      padding: 10px;
+   }
+
+   .row {
       display: flex;
       justify-content: space-between;
       width: 100%;
       margin-bottom: 10px;
-    }
- 
-    button:not(.asave)   {
+   }
+
+   button:not(.asave) {
       width: calc(25% - 5px);
       height: 60px;
       font-size: 24px;
@@ -196,129 +192,181 @@
       border-radius: 5px;
       background-color: #fff;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
- 
-    button:active {
+   }
+
+   button:active {
       transform: translateY(2px);
       box-shadow: none;
-    }
- 
-    button.operator {
+   }
+
+   button.operator {
       background-color: #f5f5f5;
       color: #333;
-    }
- 
-    button.clear {
+   }
+
+   button.clear {
       background-color: #d9534f;
       color: #fff;
-    }
- 
-    button.backspace {
+   }
+
+   button.backspace {
       background-color: #f0ad4e;
       color: #fff;
-    }
- 
-   .table_button
- {
-   width:90%;
-   margin:5px;
-   height: 35px;
+   }
+
+   .table_button {
+      width: 90%;
+      margin: 5px;
+      height: 35px;
       font-size: 20px;
       border: none;
       border-radius: 5px;
       background-color: #fff;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
- 
- }
- 
- #myTable tr td:nth-child(3) {
-   font-size: 12px;
-   background-color:white;
- }
- 
- 
- #myTable tr td:nth-child(3) {
-   font-size: 12px;
-   background-color:white;
-   overflow:auto;
- }
- 
- 
-  #myInput
-  {
-     display: inline-block;
-     float:left;
-  }
- 
- 
- #paginations {
-   /*display: inline-block;*/
-    width:90%;
-   background-color:#ede8da;
-   margin:auto;
- }
- 
- 
- a {
-   color: black;
-  /* float: left;*/
-    padding-left:8px ;
-   padding-right:8px ;
-    padding-bottom: 4px;
-   text-decoration: none;
-   border-style: groove;
-     display: inline-block;
-     border-radius:5%;
-      background-color:white;
+
+   }
+
+   #myTable tr td:nth-child(3) {
+      font-size: 12px;
+      background-color: white;
+   }
+
+
+   #myTable tr td:nth-child(3) {
+      font-size: 12px;
+      background-color: white;
+      overflow: auto;
+   }
+
+
+   #myInput {
+      display: inline-block;
+      float: left;
+   }
+
+
+   #paginations {
+      /*display: inline-block;*/
+      width: 90%;
+      background-color: #ede8da;
+      margin: auto;
+   }
+
+
+   a {
+      color: black;
+      /* float: left;*/
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-bottom: 4px;
+      text-decoration: none;
+      border-style: groove;
+      display: inline-block;
+      border-radius: 5%;
+      background-color: white;
       text-align: center;
- }
- 
- 
- 
- </style>
+   }
+</style>
 
 
 
 <body onload="readTable();">
 
+   <div id="table-parent">
    <table id="data"> </table>
-
-  <!-- <button onclick="readTable();">ReadTable</button> -->
-  <button class="asave" onclick="initTable();">InitTable</button>
-  <button class="asave"  onclick="saveTable();">SaveTable</button>
-  <hr>
-
-<div id="init" style="background-color: lightslategray; display: none;" >
-   <label for="fileForUpload">Select a file:</label>
-   <input type="file" id="fileForUpload" name="fileForUpload">
-   <hr>
-   <button class="asave" onclick="readFILE();">ReadFILE</button>
-
-   
-   
-
 </div>
+   <!-- <button onclick="readTable();">ReadTable</button> -->
+   <button class="asave" onclick="initTable();">InitTable</button>
+   <button id="saveTableB" class="asave" onclick="saveTable();" hidden>SaveTable</button>
+   <hr>
+
+   <div id="init" style="background-color: lightslategray; display: none;">
+      <label for="fileForUpload">Select a file:</label>
+      <input type="file" id="fileForUpload" name="fileForUpload">
+      <hr>
+      <button class="asave" onclick="readFILE();">ReadFILE</button>
+
+
+
+   </div>
+
+
+   
+   <div id="keyinput" style="width:95%; display:none; height: 95%;" class="overlay">
+
+      <label id='row_id'>row_id</label>
+      <label class="shownot" id='rowindex'>rowindex</label>
+
+      <label id='comp'>comp</label><br>
+      <label id='comp_d'>comp_descript</label><br>
+
+      <div class="calculator">
+
+          <label type="text" id="result" disabled></label>
+
+          <div class="row">
+              <button onclick="clearResult()">C</button>
+              <button onclick="backspace()">←</button>
+              <button class="button_disabled" disabled></button>
+
+              <button onclick="addOperator('/')">/</button>
+
+          </div>
+          <div class="row">
+              <button onclick="addNumber(7)">7</button>
+              <button onclick="addNumber(8)">8</button>
+              <button onclick="addNumber(9)">9</button>
+              <button onclick="addOperator('*')">*</button>
+
+
+          </div>
+          <div class="row">
+              <button onclick="addNumber(4)">4</button>
+              <button onclick="addNumber(5)">5</button>
+              <button onclick="addNumber(6)">6</button>
+              <button onclick="addOperator('-')">-</button>
+
+
+          </div>
+          <div class="row">
+              <button onclick="addNumber(1)">1</button>
+              <button onclick="addNumber(2)">2</button>
+              <button onclick="addNumber(3)">3</button>
+              <button style="background-color:#c6cd47" onclick="addOperator('+')">+</button>
+
+
+          </div>
+          <div class="row">
+              <button class="button_disabled" disabled></button>
+              <button onclick="addNumber(0)">0</button>
+              <button class="button_disabled" disabled></button>
+              <button id="claculate_val" style="background-color:#87ced6" onclick="calculate();">=</button>
+
+          </div>
+      </div>
+
+  </div>
 
    <script>
 
-      function readFILE() {
+      function readFILE() 
+      {
          localStorage.clear();
          let tData = ""
 
          var file = document.getElementById("fileForUpload").files[0];
-         if (file) 
-         {
+         if (file) {
             var reader = new FileReader();
 
             reader.readAsText(file, "UTF-8");
             reader.onload = function (evt) {
 
                sData = evt.target.result
-   
+
 
                retOBJ = sData.split('\r\n')
 
-               console.log(retOBJ)
+               //    console.log(retOBJ)
 
                let tBuilder = "";
                let tdata = [];
@@ -327,30 +375,14 @@
                   tdata.push(retOBJ[r].split(','))
                }
 
-           
-
                tdata.sort(sortFunction);
-               console.log(tdata);
-
-               for (var r = 0; r < tdata.length; r++) 
-               {
-                  tBuilder += "<tr>";
-
-                  let row = tdata[r]
-
-                  for (var c = 0; c < row.length; c++)
-                     tBuilder += "<td>" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</td>";
-
-                  tBuilder += "</tr>"
-               }
-
-
-               document.getElementById('data').innerHTML = tBuilder;
+                
+               document.getElementById('data').innerHTML = array2DtoTable(tdata);
 
 
             }
             reader.onerror = function (evt) {
-               console.log("error reading file");
+               //    console.log("error reading file");
 
             }
          }
@@ -362,13 +394,12 @@
       }
 
 
-      function saveTable() {
+      function saveTable()
+      {
          localStorage.clear();
          let newDB = document.getElementById('data').innerHTML
 
-         console.log(newDB)
-
-
+   
          var table = document.getElementById("data");
 
          for (var i = 0, row; row = table.rows[i]; i++) {
@@ -385,11 +416,30 @@
             }
          }
 
+         document.getElementById('saveTableB').style.display = 'none';
+         
+      }
+
+      function allStoragev2()
+      {
+
+         var valuesKeys = []
+
+         for (let i = 0; i < localStorage.length; i++) 
+         {
+
+            //valuesKeys.push()
+         const key = localStorage.key(i);
+          value = localStorage.getItem(key);
+         value+=(key);
+
+            console.log(`Key: ${key}, Value: ${value}`);
+         }
       }
 
 
       function allStorage() {
-
+         allStoragev2()
          var values = [],
             keys = Object.keys(localStorage),
             i = keys.length;
@@ -402,6 +452,36 @@
       }
 
 
+      function array2DtoTable(tdata) {
+         let tBuilder = " <thead> <tr> "
+         let tdata_0 = tdata[0];
+
+         for (var c = 0; c < tdata_0.length; c++) {
+
+            tBuilder += "<th>" + ((c == 0) ? "ID" : tdata_0[c]) + "</th>";
+         }
+         tBuilder += " </thead> </tr> <tbody> "
+
+         for (var r = 1; r < tdata.length; r++) {
+            tBuilder += "<tr>";
+            let row = tdata[r]
+
+            for (var c = 0; c < row.length; c++) {
+               if (c < row.length - 1)
+                  tBuilder += "<td>" + row[c] + "</td>";
+               if (c == row.length - 1)
+                  tBuilder += "<td> <button style='width:95%;' onclick='calcs("+r+");' >" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</button> </td>";
+            }
+
+
+            tBuilder += "</tr>"
+         }
+
+         tBuilder += " </tbody>"
+
+         return tBuilder;
+      }
+
       function sortFunction(a, b) {
          if (a[0] === b[0]) {
             return 0;
@@ -411,79 +491,218 @@
          }
       }
 
-      function readTable() {
 
-         console.log(" retOBJ")
+      function array2DtoTablev2(tdata) {
+         let tBuilder = " <thead> <tr> "
+         let tdata_0 = tdata[0];
+
+         for (var c = 0; c < tdata_0.length; c++) {
+
+            if(c<  tdata_0.length- 1)
+            tBuilder += "<th>" + ((c == 0) ? "ID" : tdata_0[c]) + "</th>";
 
 
-         let retOBJ = allStorage();
-
-         console.log(retOBJ);
-
-         console.log(typeof retOBJ);
-
-         let tBuilder = "";
-         let tdata = [];
-
-         for (var r = 0; r < retOBJ.length; r++) {
-            tdata.push(JSON.parse(retOBJ[r]))
+            else  tBuilder += "<td style='display:none'>" + tdata_0[c] + "</td>";
          }
+         tBuilder += " </thead> </tr> <tbody> "
 
-         console.log(tdata);
-         console.log(typeof tdata);
-
-         tdata.sort(sortFunction);
-         console.log(tdata);
-
-         for (var r = 0; r < tdata.length; r++) {
+         for (var r = 1; r < tdata.length; r++) {
             tBuilder += "<tr>";
-
-
-
             let row = tdata[r]
 
-            for (var c = 0; c < row.length; c++)
+            for (var c = 0; c < row.length; c++) 
             {
-               if(c<  row.length - 1)
-                  tBuilder += "<td>" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</td>";
-               if(c == row.length - 1)
-               tBuilder += "<td> <button style='width:95%;' onclick='calcs();' >" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</button> </td>";
-            }
-               
+               if (c < row.length - 2)
+                  tBuilder += "<td>" + row[c] + "</td>";
+               if (c == row.length - 2)
+                  tBuilder += "<td> <button style='width:95%;' onclick='calcs("+r+");' >" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</button> </td>";
+            
+                  if (c == row.length - 1){
+                     tBuilder += "<td style='display:none'>" + row[c] + "</td>";
+                  }
+               }
+
 
             tBuilder += "</tr>"
          }
 
+         tBuilder += " </tbody>"
 
-         document.getElementById('data').innerHTML = tBuilder;
+         return tBuilder;
       }
 
-      function calcs()
-      {
-         alert('Clciked')
+      function readTable() {
+         let tdata = [];
+            for (let i = 0; i < localStorage.length; i++) 
+         {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            let td = JSON.parse(value)
+            td.push(key);
+            tdata.push(td)
+   
+         }
+
+         tdata.sort(sortFunction);
+         document.getElementById('data').innerHTML = array2DtoTablev2(tdata);
       }
 
-      function initTable() 
-      {
-        /* localStorage.clear();
+      function calcs(row) {
 
-         let iniData =
-            [
-               ["ID", "comp", "descr", "Categorii", "Qty"]
-            ]
 
-         let i = 0;
+         let clickedRow =  document.getElementById('data').rows[row]
 
-         iniData.forEach(element => {
+      document.getElementById("row_id").innerText =  clickedRow.cells[0].innerText
+      document.getElementById("rowindex").innerText =  row
+      document.getElementById("comp").innerText =  clickedRow.cells[1].innerText
+      document.getElementById("comp_d").innerText =  clickedRow.cells[2].innerText
 
-            localStorage.setItem("trow" + i.toString(), JSON.stringify(element))
+      document.getElementById("result").innerText =  clickedRow.cells[4].innerText
+   
 
-            i = i + 1
-         });
-         */
+        document.getElementById('keyinput').style.display = "block";
+      }
+
+      function initTable() {
          document.getElementById('init').style.display = 'block'; // Show
+         document.getElementById('saveTableB').style.display = 'block';
 
       }
+
+
+      function clearResult() {
+                document.getElementById('result').innerText = '0';
+            };
+
+
+            function addOperator(OP) {
+                var ini_val = document.getElementById('result').innerText;
+                document.getElementById('result').innerText = ini_val + OP;
+
+            };
+
+            function backspace() {
+                var ini_val = document.getElementById('result').innerText;
+                var c = ini_val.substring(0, ini_val.length - 1)
+                document.getElementById('result').innerText = c;
+            };
+
+            function addNumber(NR) {
+                var ini_val = document.getElementById('result').innerText;
+                document.getElementById('result').innerText = ini_val + NR;
+            };
+
+
+            function addDecimal() {
+                var ini_val = document.getElementById('result').innerText;
+                document.getElementById('result').innerText = ini_val + '.';
+            };
+
+
+            function alt_eval() {
+                // this is the string that we will be processing eg. -10+26+33-56*34/23
+                var inputString = document.getElementById('result').innerText;
+                if (inputString.length == 1 && inputString == '0') {
+                    return 0;
+                }
+                // forming an array of numbers. eg for above string it will be: numbers = ["10", "26", "33", "56", "34", "23"]
+                var numbers = inputString.split(/\+|\-|\*|\//g);
+
+                // forming an array of operators. for above string it will be: operators = ["+", "+", "-", "*", "/"]
+                // first we replace all the numbers and dot with empty string and then split
+                var operators = inputString.replace(/[0-9]|\./g, "").split("");
+          
+                // now we are looping through the array and doing one operation at a time.
+                // first divide, then multiply, then subtraction and then addition
+                // as we move we are alterning the original numbers and operators array
+                // the final element remaining in the array will be the output
+
+                var divide = operators.indexOf("/");
+                while (divide != -1) {
+                    numbers.splice(divide, 2, numbers[divide] / numbers[divide + 1]);
+                    operators.splice(divide, 1);
+                    divide = operators.indexOf("/");
+                }
+
+                var multiply = operators.indexOf("*");
+                while (multiply != -1) {
+                    numbers.splice(multiply, 2, numbers[multiply] * numbers[multiply + 1]);
+                    operators.splice(multiply, 1);
+                    multiply = operators.indexOf("*");
+                }
+
+                var subtract = operators.indexOf("-");
+                while (subtract != -1) {
+                    numbers.splice(subtract, 2, numbers[subtract] - numbers[subtract + 1]);
+                    operators.splice(subtract, 1);
+                    subtract = operators.indexOf("-");
+                }
+
+                var add = operators.indexOf("+");
+                while (add != -1) {
+                    // using parseFloat is necessary, otherwise it will result in string concatenation :)
+                    numbers.splice(add, 2, parseFloat(numbers[add]) + parseFloat(numbers[add + 1]));
+                    operators.splice(add, 1);
+                    add = operators.indexOf("+");
+                }
+
+
+                return numbers[0];
+
+            }
+
+            function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
+            function calculate() {
+                table = document.getElementById("data");
+
+                adder = alt_eval();
+
+                rowindex = parseInt(document.getElementById("rowindex").innerText);
+
+                if (isNumeric(adder) == true) {
+                    table.rows[rowindex].cells[4].innerHTML =  '<button style="width:95%;" onclick="calcs(' + rowindex + ');"> ' + adder + ' </button>';
+                    
+                    //= '<button class="table_button" onclick="fadd(' + rowindex + ')">' + adder + '</button>';
+                   
+                    document.getElementById('keyinput').style.display = "none";
+
+                    let rowid = document.getElementById("row_id").innerText
+
+                    let oldVal = localStorage.getItem( table.rows[rowindex].cells[5].innerText);
+
+                    bb = JSON.parse(oldVal)
+                    bb[4] = adder
+
+         
+
+
+                    localStorage.setItem( table.rows[rowindex].cells[5].innerText , JSON.stringify(bb))
+
+                   // saveTable()
+                     
+
+                    /*rowid = parseInt(document.getElementById("row_id").innerText);
+
+                    cb = document.getElementById('offline_check');
+
+                    document.getElementById('comp_d').style.background = '#3498DB';
+                    if (cb.checked == false) {
+                        google.script.run.withSuccessHandler(save_with_id_DONE).save_with_id(rowid, parseInt( adder));
+                         
+                    }*/
+
+                }
+               /* else {
+
+                    document.getElementById('comp_d').innerText = document.getElementById('result').innerText + " Not an VALID Expresion";
+                    document.getElementById('comp_d').style.background = 'red';
+
+                }*/
+
+            };
 
    </script>
 
