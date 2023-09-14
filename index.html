@@ -273,8 +273,12 @@
 <body onload="readTable();">
 
    <div id="table-parent">
-   <table id="data"> </table>
-</div>
+      <table id="data"> </table>
+   </div>
+
+   <center>
+      <div id="paginations"> </div>
+   </center>
    <!-- <button onclick="readTable();">ReadTable</button> -->
    <button class="asave" onclick="initTable();">InitTable</button>
    <button id="saveTableB" class="asave" onclick="saveTable();" hidden>SaveTable</button>
@@ -291,7 +295,7 @@
    </div>
 
 
-   
+
    <div id="keyinput" style="width:95%; display:none; height: 95%;" class="overlay">
 
       <label id='row_id'>row_id</label>
@@ -302,55 +306,54 @@
 
       <div class="calculator">
 
-          <label type="text" id="result" disabled></label>
+         <label type="text" id="result" disabled></label>
 
-          <div class="row">
-              <button onclick="clearResult()">C</button>
-              <button onclick="backspace()">←</button>
-              <button class="button_disabled" disabled></button>
+         <div class="row">
+            <button onclick="clearResult()">C</button>
+            <button onclick="backspace()">←</button>
+            <button class="button_disabled" disabled></button>
 
-              <button onclick="addOperator('/')">/</button>
+            <button onclick="addOperator('/')">/</button>
 
-          </div>
-          <div class="row">
-              <button onclick="addNumber(7)">7</button>
-              <button onclick="addNumber(8)">8</button>
-              <button onclick="addNumber(9)">9</button>
-              <button onclick="addOperator('*')">*</button>
-
-
-          </div>
-          <div class="row">
-              <button onclick="addNumber(4)">4</button>
-              <button onclick="addNumber(5)">5</button>
-              <button onclick="addNumber(6)">6</button>
-              <button onclick="addOperator('-')">-</button>
+         </div>
+         <div class="row">
+            <button onclick="addNumber(7)">7</button>
+            <button onclick="addNumber(8)">8</button>
+            <button onclick="addNumber(9)">9</button>
+            <button onclick="addOperator('*')">*</button>
 
 
-          </div>
-          <div class="row">
-              <button onclick="addNumber(1)">1</button>
-              <button onclick="addNumber(2)">2</button>
-              <button onclick="addNumber(3)">3</button>
-              <button style="background-color:#c6cd47" onclick="addOperator('+')">+</button>
+         </div>
+         <div class="row">
+            <button onclick="addNumber(4)">4</button>
+            <button onclick="addNumber(5)">5</button>
+            <button onclick="addNumber(6)">6</button>
+            <button onclick="addOperator('-')">-</button>
 
 
-          </div>
-          <div class="row">
-              <button class="button_disabled" disabled></button>
-              <button onclick="addNumber(0)">0</button>
-              <button class="button_disabled" disabled></button>
-              <button id="claculate_val" style="background-color:#87ced6" onclick="calculate();">=</button>
+         </div>
+         <div class="row">
+            <button onclick="addNumber(1)">1</button>
+            <button onclick="addNumber(2)">2</button>
+            <button onclick="addNumber(3)">3</button>
+            <button style="background-color:#c6cd47" onclick="addOperator('+')">+</button>
 
-          </div>
+
+         </div>
+         <div class="row">
+            <button class="button_disabled" disabled></button>
+            <button onclick="addNumber(0)">0</button>
+            <button class="button_disabled" disabled></button>
+            <button id="claculate_val" style="background-color:#87ced6" onclick="calculate();">=</button>
+
+         </div>
       </div>
 
-  </div>
+   </div>
 
    <script>
 
-      function readFILE() 
-      {
+      function readFILE() {
          localStorage.clear();
          let tData = ""
 
@@ -376,7 +379,7 @@
                }
 
                tdata.sort(sortFunction);
-                
+
                document.getElementById('data').innerHTML = array2DtoTable(tdata);
 
 
@@ -394,12 +397,11 @@
       }
 
 
-      function saveTable()
-      {
+      function saveTable() {
          localStorage.clear();
          let newDB = document.getElementById('data').innerHTML
 
-   
+
          var table = document.getElementById("data");
 
          for (var i = 0, row; row = table.rows[i]; i++) {
@@ -417,21 +419,19 @@
          }
 
          document.getElementById('saveTableB').style.display = 'none';
-         
+
       }
 
-      function allStoragev2()
-      {
+      function allStoragev2() {
 
          var valuesKeys = []
 
-         for (let i = 0; i < localStorage.length; i++) 
-         {
+         for (let i = 0; i < localStorage.length; i++) {
 
             //valuesKeys.push()
-         const key = localStorage.key(i);
-          value = localStorage.getItem(key);
-         value+=(key);
+            const key = localStorage.key(i);
+            value = localStorage.getItem(key);
+            value += (key);
 
             console.log(`Key: ${key}, Value: ${value}`);
          }
@@ -470,7 +470,7 @@
                if (c < row.length - 1)
                   tBuilder += "<td>" + row[c] + "</td>";
                if (c == row.length - 1)
-                  tBuilder += "<td> <button style='width:95%;' onclick='calcs("+r+");' >" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</button> </td>";
+                  tBuilder += "<td> <button style='width:95%;' onclick='calcs(" + r + ");' >" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</button> </td>";
             }
 
 
@@ -498,11 +498,11 @@
 
          for (var c = 0; c < tdata_0.length; c++) {
 
-            if(c<  tdata_0.length- 1)
-            tBuilder += "<th>" + ((c == 0) ? "ID" : tdata_0[c]) + "</th>";
+            if (c < tdata_0.length - 1)
+               tBuilder += "<th>" + ((c == 0) ? "ID" : tdata_0[c]) + "</th>";
 
 
-            else  tBuilder += "<td style='display:none'>" + tdata_0[c] + "</td>";
+            else tBuilder += "<td style='display:none'>" + tdata_0[c] + "</td>";
          }
          tBuilder += " </thead> </tr> <tbody> "
 
@@ -510,17 +510,16 @@
             tBuilder += "<tr>";
             let row = tdata[r]
 
-            for (var c = 0; c < row.length; c++) 
-            {
+            for (var c = 0; c < row.length; c++) {
                if (c < row.length - 2)
                   tBuilder += "<td>" + row[c] + "</td>";
                if (c == row.length - 2)
-                  tBuilder += "<td> <button style='width:95%;' onclick='calcs("+r+");' >" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</button> </td>";
-            
-                  if (c == row.length - 1){
-                     tBuilder += "<td style='display:none'>" + row[c] + "</td>";
-                  }
+                  tBuilder += "<td> <button style='width:95%;' onclick='calcs(" + r + ");' >" + ((r == 0 && c == 0) ? "ID" : row[c]) + "</button> </td>";
+
+               if (c == row.length - 1) {
+                  tBuilder += "<td style='display:none'>" + row[c] + "</td>";
                }
+            }
 
 
             tBuilder += "</tr>"
@@ -533,34 +532,78 @@
 
       function readTable() {
          let tdata = [];
-            for (let i = 0; i < localStorage.length; i++) 
-         {
+         let pgata = [];
+         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             const value = localStorage.getItem(key);
             let td = JSON.parse(value)
             td.push(key);
             tdata.push(td)
-   
+
+            pgata.push(td[3])
+
          }
 
+         const uniqueArray = [...new Set(pgata)];
+         let elem_app_buttons = ""
+
+         uniqueArray.forEach(name => {
+            elem_app_buttons += ' <a onclick="filterby(this);">' + name + '</a>';
+
+         });
+
+         document.getElementById('paginations').innerHTML = elem_app_buttons;
          tdata.sort(sortFunction);
          document.getElementById('data').innerHTML = array2DtoTablev2(tdata);
+
+
+      }
+
+
+      function filterby(el) {
+
+         var filter, table, tr, td, i, txtValue;
+
+         filter = el.innerText.toUpperCase();
+         table = document.getElementById("data");
+         tr = table.getElementsByTagName("tr");
+         for (i = 0; i < tr.length; i++) {
+
+            td = tr[i].getElementsByTagName("td")[3];
+
+            if (td) {
+               txtValue = td.textContent || td.innerText;
+               if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+               } else {
+                  tr[i].style.display = "none";
+               }
+            }
+         }
+
+         var pag = document.getElementById('paginations').getElementsByTagName('a')
+         for (i = 0; i < pag.length; i++) {
+            var childDiv = pag[i];
+            childDiv.style.backgroundColor = 'white';
+         }
+         el.style.backgroundColor = '#4da6ff';
+
       }
 
       function calcs(row) {
 
 
-         let clickedRow =  document.getElementById('data').rows[row]
+         let clickedRow = document.getElementById('data').rows[row]
 
-      document.getElementById("row_id").innerText =  clickedRow.cells[0].innerText
-      document.getElementById("rowindex").innerText =  row
-      document.getElementById("comp").innerText =  clickedRow.cells[1].innerText
-      document.getElementById("comp_d").innerText =  clickedRow.cells[2].innerText
+         document.getElementById("row_id").innerText = clickedRow.cells[0].innerText
+         document.getElementById("rowindex").innerText = row
+         document.getElementById("comp").innerText = clickedRow.cells[1].innerText
+         document.getElementById("comp_d").innerText = clickedRow.cells[2].innerText
 
-      document.getElementById("result").innerText =  clickedRow.cells[4].innerText
-   
+         document.getElementById("result").innerText = clickedRow.cells[4].innerText + "+"
 
-        document.getElementById('keyinput').style.display = "block";
+
+         document.getElementById('keyinput').style.display = "block";
       }
 
       function initTable() {
@@ -571,138 +614,138 @@
 
 
       function clearResult() {
-                document.getElementById('result').innerText = '0';
-            };
+         document.getElementById('result').innerText = '0';
+      };
 
 
-            function addOperator(OP) {
-                var ini_val = document.getElementById('result').innerText;
-                document.getElementById('result').innerText = ini_val + OP;
+      function addOperator(OP) {
+         var ini_val = document.getElementById('result').innerText;
+         document.getElementById('result').innerText = ini_val + OP;
 
-            };
+      };
 
-            function backspace() {
-                var ini_val = document.getElementById('result').innerText;
-                var c = ini_val.substring(0, ini_val.length - 1)
-                document.getElementById('result').innerText = c;
-            };
+      function backspace() {
+         var ini_val = document.getElementById('result').innerText;
+         var c = ini_val.substring(0, ini_val.length - 1)
+         document.getElementById('result').innerText = c;
+      };
 
-            function addNumber(NR) {
-                var ini_val = document.getElementById('result').innerText;
-                document.getElementById('result').innerText = ini_val + NR;
-            };
-
-
-            function addDecimal() {
-                var ini_val = document.getElementById('result').innerText;
-                document.getElementById('result').innerText = ini_val + '.';
-            };
+      function addNumber(NR) {
+         var ini_val = document.getElementById('result').innerText;
+         document.getElementById('result').innerText = ini_val + NR;
+      };
 
 
-            function alt_eval() {
-                // this is the string that we will be processing eg. -10+26+33-56*34/23
-                var inputString = document.getElementById('result').innerText;
-                if (inputString.length == 1 && inputString == '0') {
-                    return 0;
-                }
-                // forming an array of numbers. eg for above string it will be: numbers = ["10", "26", "33", "56", "34", "23"]
-                var numbers = inputString.split(/\+|\-|\*|\//g);
-
-                // forming an array of operators. for above string it will be: operators = ["+", "+", "-", "*", "/"]
-                // first we replace all the numbers and dot with empty string and then split
-                var operators = inputString.replace(/[0-9]|\./g, "").split("");
-          
-                // now we are looping through the array and doing one operation at a time.
-                // first divide, then multiply, then subtraction and then addition
-                // as we move we are alterning the original numbers and operators array
-                // the final element remaining in the array will be the output
-
-                var divide = operators.indexOf("/");
-                while (divide != -1) {
-                    numbers.splice(divide, 2, numbers[divide] / numbers[divide + 1]);
-                    operators.splice(divide, 1);
-                    divide = operators.indexOf("/");
-                }
-
-                var multiply = operators.indexOf("*");
-                while (multiply != -1) {
-                    numbers.splice(multiply, 2, numbers[multiply] * numbers[multiply + 1]);
-                    operators.splice(multiply, 1);
-                    multiply = operators.indexOf("*");
-                }
-
-                var subtract = operators.indexOf("-");
-                while (subtract != -1) {
-                    numbers.splice(subtract, 2, numbers[subtract] - numbers[subtract + 1]);
-                    operators.splice(subtract, 1);
-                    subtract = operators.indexOf("-");
-                }
-
-                var add = operators.indexOf("+");
-                while (add != -1) {
-                    // using parseFloat is necessary, otherwise it will result in string concatenation :)
-                    numbers.splice(add, 2, parseFloat(numbers[add]) + parseFloat(numbers[add + 1]));
-                    operators.splice(add, 1);
-                    add = operators.indexOf("+");
-                }
+      function addDecimal() {
+         var ini_val = document.getElementById('result').innerText;
+         document.getElementById('result').innerText = ini_val + '.';
+      };
 
 
-                return numbers[0];
+      function alt_eval() {
+         // this is the string that we will be processing eg. -10+26+33-56*34/23
+         var inputString = document.getElementById('result').innerText;
+         if (inputString.length == 1 && inputString == '0') {
+            return 0;
+         }
+         // forming an array of numbers. eg for above string it will be: numbers = ["10", "26", "33", "56", "34", "23"]
+         var numbers = inputString.split(/\+|\-|\*|\//g);
 
-            }
+         // forming an array of operators. for above string it will be: operators = ["+", "+", "-", "*", "/"]
+         // first we replace all the numbers and dot with empty string and then split
+         var operators = inputString.replace(/[0-9]|\./g, "").split("");
 
-            function isNumeric(n) {
-                return !isNaN(parseFloat(n)) && isFinite(n);
-            }
+         // now we are looping through the array and doing one operation at a time.
+         // first divide, then multiply, then subtraction and then addition
+         // as we move we are alterning the original numbers and operators array
+         // the final element remaining in the array will be the output
 
-            function calculate() {
-                table = document.getElementById("data");
+         var divide = operators.indexOf("/");
+         while (divide != -1) {
+            numbers.splice(divide, 2, numbers[divide] / numbers[divide + 1]);
+            operators.splice(divide, 1);
+            divide = operators.indexOf("/");
+         }
 
-                adder = alt_eval();
+         var multiply = operators.indexOf("*");
+         while (multiply != -1) {
+            numbers.splice(multiply, 2, numbers[multiply] * numbers[multiply + 1]);
+            operators.splice(multiply, 1);
+            multiply = operators.indexOf("*");
+         }
 
-                rowindex = parseInt(document.getElementById("rowindex").innerText);
+         var subtract = operators.indexOf("-");
+         while (subtract != -1) {
+            numbers.splice(subtract, 2, numbers[subtract] - numbers[subtract + 1]);
+            operators.splice(subtract, 1);
+            subtract = operators.indexOf("-");
+         }
 
-                if (isNumeric(adder) == true) {
-                    table.rows[rowindex].cells[4].innerHTML =  '<button style="width:95%;" onclick="calcs(' + rowindex + ');"> ' + adder + ' </button>';
-                    
-                    //= '<button class="table_button" onclick="fadd(' + rowindex + ')">' + adder + '</button>';
-                   
-                    document.getElementById('keyinput').style.display = "none";
-
-                    let rowid = document.getElementById("row_id").innerText
-
-                    let oldVal = localStorage.getItem( table.rows[rowindex].cells[5].innerText);
-
-                    bb = JSON.parse(oldVal)
-                    bb[4] = adder
-
-         
+         var add = operators.indexOf("+");
+         while (add != -1) {
+            // using parseFloat is necessary, otherwise it will result in string concatenation :)
+            numbers.splice(add, 2, parseFloat(numbers[add]) + parseFloat(numbers[add + 1]));
+            operators.splice(add, 1);
+            add = operators.indexOf("+");
+         }
 
 
-                    localStorage.setItem( table.rows[rowindex].cells[5].innerText , JSON.stringify(bb))
+         return numbers[0];
 
-                   // saveTable()
-                     
+      }
 
-                    /*rowid = parseInt(document.getElementById("row_id").innerText);
+      function isNumeric(n) {
+         return !isNaN(parseFloat(n)) && isFinite(n);
+      }
 
-                    cb = document.getElementById('offline_check');
+      function calculate() {
+         table = document.getElementById("data");
 
-                    document.getElementById('comp_d').style.background = '#3498DB';
-                    if (cb.checked == false) {
-                        google.script.run.withSuccessHandler(save_with_id_DONE).save_with_id(rowid, parseInt( adder));
-                         
-                    }*/
+         adder = alt_eval();
 
-                }
-               /* else {
+         rowindex = parseInt(document.getElementById("rowindex").innerText);
 
-                    document.getElementById('comp_d').innerText = document.getElementById('result').innerText + " Not an VALID Expresion";
-                    document.getElementById('comp_d').style.background = 'red';
+         if (isNumeric(adder) == true) {
+            table.rows[rowindex].cells[4].innerHTML = '<button style="width:95%;" onclick="calcs(' + rowindex + ');"> ' + adder + ' </button>';
 
-                }*/
+            //= '<button class="table_button" onclick="fadd(' + rowindex + ')">' + adder + '</button>';
 
-            };
+            document.getElementById('keyinput').style.display = "none";
+
+            let rowid = document.getElementById("row_id").innerText
+
+            let oldVal = localStorage.getItem(table.rows[rowindex].cells[5].innerText);
+
+            bb = JSON.parse(oldVal)
+            bb[4] = adder
+
+
+
+
+            localStorage.setItem(table.rows[rowindex].cells[5].innerText, JSON.stringify(bb))
+
+            // saveTable()
+
+
+            /*rowid = parseInt(document.getElementById("row_id").innerText);
+
+            cb = document.getElementById('offline_check');
+
+            document.getElementById('comp_d').style.background = '#3498DB';
+            if (cb.checked == false) {
+                google.script.run.withSuccessHandler(save_with_id_DONE).save_with_id(rowid, parseInt( adder));
+                 
+            }*/
+
+         }
+         /* else {
+
+              document.getElementById('comp_d').innerText = document.getElementById('result').innerText + " Not an VALID Expresion";
+              document.getElementById('comp_d').style.background = 'red';
+
+          }*/
+
+      };
 
    </script>
 
