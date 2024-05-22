@@ -1,106 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner</title>
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-    <style>
-        #reader {
-           
-           width :75vw;
-			height:75vh;
-            margin: auto;
-        }
-        #controls {
-            margin-top: 10px;
-            text-align: center;
-        }
-        #result {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 1.2em;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            margin: 5px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ZXing for JS">
+
+  <title>ZXing TypeScript | Decoding from camera stream</title>
+
+
 </head>
+
+<style>
+  #video {
+    width: 75vw;
+    height: 75vh;
+    margin: auto;
+    margin-top: 1vh;
+    margin-left: 1vw;
+    border: solid rgb(49, 184, 117) 0.5px;
+  }
+
+  .video-p {
+    width: 78vw;
+    height: 78vh;
+    margin: auto;
+
+  }
+
+  .wrapper {
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+    border: solid grey 0.5px;
+    padding: 3px;
+  }
+</style>
+
 <body>
 
-<div id="reader"></div>
-<div id="result"></div>
-<div id="controls">
-    <button id="startButton">Start Scanning</button>
-    <button id="stopButton">Stop Scanning</button>
-</div>
+  <main class="wrapper" style="padding-top:2em">
 
-<script>
-    let html5QrCode;
+    <section class="container" id="demo-content">
 
-    function onScanSuccess(decodedText, decodedResult) {
-        // Handle the result here.
-        console.log(`Scan result: ${decodedText}`, decodedResult);
-        document.getElementById('result').innerText = `Scan result: ${decodedText}`;
-		alert(decodedText);
-		if (html5QrCode) {
-            html5QrCode.stop().then(() => {
-                console.log("QR Code scanning stopped.");
-                html5QrCode = null;
-            }).catch(err => {
-                console.error(`Error stopping the scanner: ${err}`);
-            });
-        }
-		
-    }
 
-    function onScanError(errorMessage) {
-        // Handle scan error
-       // console.warn(`Scan error: ${errorMessage}`);
-    }
+      <div>
+        <button id="startButton">Start</button>
+        <button id="resetButton">Reset</button>
+      </div>
 
-    document.getElementById('startButton').addEventListener('click', () => {
-        // If scanner is already running, do nothing.
-        if (html5QrCode) {
-            return;
-        }
+      <div class="video-p">
+        <video id="video"></video>
+      </div>
 
-        html5QrCode = new Html5Qrcode("reader");
+      <div id="sourceSelectPanel" style="display:none">
+        <label for="sourceSelect">Change video source:</label>
+        <select id="sourceSelect" style="max-width:400px">
+        </select>
+      </div>
 
-        // Calculate the qrbox size based on the reader element dimensions.
-        const readerElement = document.getElementById('reader');
-        const qrboxSize = Math.min(readerElement.clientWidth, readerElement.clientHeight) * 0.9;
-		let scaleSize = Math.min(250,qrboxSize - (qrboxSize/5))
+      <label>Result:</label>
+      <pre><code id="result"></code></pre>
 
-        // Specify the configuration of the scanner.
-        const config = { fps: 10,
-		qrbox: { width: 250, height: 250 }
-		};
 
-        // Start the scanner.
-        html5QrCode.start(
-            { facingMode: "environment" }, // Use back camera
-            config,
-            onScanSuccess,
-            onScanError
-        ).catch(err => {
-            console.error(`Error starting the scanner: ${err}`);
-        });
-    });
+    </section>
 
-    document.getElementById('stopButton').addEventListener('click', () => {
-        if (html5QrCode) {
-            html5QrCode.stop().then(() => {
-                console.log("QR Code scanning stopped.");
-                html5QrCode = null;
-            }).catch(err => {
-                console.error(`Error stopping the scanner: ${err}`);
-            });
-        }
-    });
-</script>
+
+  </main>
+
+  <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest/umd/index.min.js"></script>
+  <script type="text/javascript">
+    window.addEventListener('load', function () {
+      let selectedDeviceId;
+      const codeReader = new ZXing.BrowserMultiFormatReader()
+      console.log('ZXing code reader initialized')
+      codeReader.listVideoInputDevices()
+        .then((videoInputDevices) => {
+          const sourceSelect = document.getElementById('sourceSelect')
+          selectedDeviceId = videoInputDevices[0].deviceId
+          if (videoInputDevices.length >= 1) {
+            videoInputDevices.forEach((element) => {
+              const sourceOption = document.createElement('option')
+              sourceOption.text = element.label
+              sourceOption.value = element.deviceId
+              sourceSelect.appendChild(sourceOption)
+            })
+
+            sourceSelect.onchange = () => {
+              selectedDeviceId = sourceSelect.value;
+            };
+
+            const sourceSelectPanel = document.getElementById('sourceSelectPanel')
+            sourceSelectPanel.style.display = 'block'
+          }
+
+          document.getElementById('startButton').addEventListener('click', () => {
+            codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+              if (result) {
+                console.log(result)
+                document.getElementById('result').textContent = result.text
+              }
+              if (err && !(err instanceof ZXing.NotFoundException)) {
+                console.error(err)
+                document.getElementById('result').textContent = err
+              }
+            })
+            console.log(`Started continous decode from camera with id ${selectedDeviceId}`)
+          })
+
+          document.getElementById('resetButton').addEventListener('click', () => {
+            codeReader.reset()
+            document.getElementById('result').textContent = '';
+            console.log('Reset.')
+          })
+
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    })
+  </script>
 
 </body>
+
 </html>
